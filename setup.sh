@@ -38,9 +38,27 @@ echo "deb https://deb.parrot.sh/parrot/ lts-security main contrib non-free" > /e
 BLUE "Update, Upgrade, then Install Tools I Like"
 apt update
 apt -y full-upgrade
-apt -y dist-upgrade
-apt -y install parrot-pico parrot-mini parrot-tools-cloud parrot-interface parrot-interface-full parrot-tools-full
-apt -y install xrdp open-vm-tools net-tools wine openssh-server vscodium anonsurf tor
+
+BLUE "Installing vmtools..."
+apt -y open-vm-tools 
+
+BLUE "Installing xrdp..."
+apt -y install xrdp 
+
+BLUE "Installing wine..."
+apt -y net-tools wine 
+
+BLUE "Installing openssh-server..."
+apt -y openssh-server 
+
+BLUE "Installing vscodium..."
+apt -y vscodium 
+
+BLUE "Installing anonsurf..."
+apt -y anonsurf 
+
+BLUE "Installing tor..."
+apt -y tor
 
 BLUE "Installing git..."
 sudo apt install -y git
