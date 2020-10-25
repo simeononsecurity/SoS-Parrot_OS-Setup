@@ -39,19 +39,11 @@ BLUE "Update, Upgrade, then Install Tools I Like"
 apt update
 apt -y full-upgrade
 apt -y dist-upgrade
-apt -y install parrot-pico parrot-mini parrot-tools-cloud
-apt -y --allow-downgrades install parrot-interface parrot-interface-full parrot-tools-full
-apt -y install xrdp open-vm-tools-desktop open-vm-tools net-tools wine openssh-server vscodium anonsurf tor
+apt -y install parrot-pico parrot-mini parrot-tools-cloud parrot-interface parrot-interface-full parrot-tools-full
+apt -y install xrdp open-vm-tools net-tools wine openssh-server vscodium anonsurf tor
 
 BLUE "Installing git..."
 sudo apt install -y git
-
-BLUE "Installing Sublime Text..." # according to https://www.sublimetext.com/docs/3/linux_repositories.html-
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt install -y apt-transport-https
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-sudo apt update
-sudo apt install -y sublime-text
 
 BLUE "Installing terminator..."
 sudo apt install -y terminator
@@ -103,14 +95,6 @@ pip install requests
 
 BLUE "Installing idle..."
 sudo apt install -y idle
-
-BLUE "Installing xclip..."
-sudo apt install -y xclip
-grep "alias xclip" ~/.bashrc
-if [ $? -eq 1 ]
-then
-	echo "alias xclip='xclip -selection clipboard'" >> ~/.bashrc
-fi
 
 BLUE "Installing Python flask..."
 sudo pip install flask
@@ -172,18 +156,10 @@ sudo apt install -y qrencode
 BLUE "Installing pdfcrack..."
 sudo apt install -y pdfcrack
 
-BLUE "Installing Vagrant..."
-sudo apt install -y vagrant
-
 BLUE "Installing Hopper..."
 wget "https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.3.14-Linux.deb"
 dpkg -i Hopper-v4-4.3.14-Linux.deb
 rm Hopper-v4-4.3.14-Linux.deb
-
-BLUE "Installing Oracle Java 8..."
-echo "" | sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install -y oracle-java8-installer
 
 BLUE "Downloading stegsolve.jar..."
 wget "http://www.caesum.com/handbook/Stegsolve.jar" -O "stegsolve.jar"
@@ -230,9 +206,3 @@ sudo apt install -y tcpflow
 
 BLUE "Installing Python scapy..."
 sudo pip install scapy
-
-BLUE "Installing the thing that 7z2john.pl needs..."
-sudo apt install libcompress-raw-lzma-perl 
-
-BLUE "Installing dos2unix..."
-sudo apt install libcompress-raw-lzma-perl
