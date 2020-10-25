@@ -111,9 +111,6 @@ sudo apt-get install -y wireshark
 BLUE "Installing python-requests..."
 pip install requests
 
-BLUE "Installing idle..."
-sudo apt install -y idle
-
 BLUE "Installing Python flask..."
 sudo pip install flask
 
