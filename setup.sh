@@ -28,12 +28,12 @@ then
 fi
 
 
-BLUE "Fix missing public key bug"
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B56FFA946EB1660A
+#BLUE "Fix missing public key bug"
+#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B56FFA946EB1660A
 
-BLUE "Switch to LTS-SECURITY repo"
-rm /etc/apt/sources.list.d/parrot.list
-echo "deb https://deb.parrot.sh/parrot/ lts-security main contrib non-free" > /etc/apt/sources.list.d/parrot.list
+#BLUE "Switch to LTS-SECURITY repo"
+#rm /etc/apt/sources.list.d/parrot.list
+#echo "deb https://deb.parrot.sh/parrot/ lts-security main contrib non-free" > /etc/apt/sources.list.d/parrot.list
 
 BLUE "Update, Upgrade, then Install Tools I Like"
 apt update
@@ -68,13 +68,6 @@ sudo apt install -y terminator
 
 BLUE "Setting terminator as the default terminal emulator..."
 sed -i s/Exec=gnome-terminal/Exec=terminator/g /usr/share/applications/gnome-terminal.desktop
-
-BLUE "Forcing a color prompt in ~/.bashrc..."
-grep "export PS1" ~/.bashrc
-if [ $? -eq 1 ]
-then
-	echo "export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> ~/.bashrc
-fi
 
 BLUE "Enable Anonsurf at boot"
 ananon enable-boot
@@ -126,9 +119,6 @@ sudo pip install passlib
 BLUE "Installing Binwalk..."
 sudo apt install -y binwalk
 
-BLUE "Installing Tesseract..."
-sudo apt install -y tesseract-ocr
-
 BLUE "Installing foremost..."
 sudo apt install -y foremost
 
@@ -138,26 +128,8 @@ sudo apt install -y bsdgames
 BLUE "Installing Python pwntools..."
 sudo pip install pwntools
 
-BLUE "Installing Go..."
-sudo apt install -y golang-go
-BLUE "Adding GOPATH and GOBIN to .bashrc, so future installs are easy.."
-grep "export GOPATH" ~/.bashrc
-if [ $? -eq 1 ]
-then
-	echo "export GOPATH=\$HOME/.go/" >> ~/.bashrc
-fi
-grep "export GOBIN" ~/.bashrc
-if [ $? -eq 1 ]
-then
-	echo "export GOBIN=\$HOME/.go/bin" >> ~/.bashrc
-	echo "export PATH=\$PATH:\$GOBIN" >> ~/.bashrc
-fi
-
 BLUE "Installing sqlite..."
 sudo apt install -y sqlite	
-
-BLUE "Installing nikto..."
-sudo apt install -y nikto
 
 BLUE "Installing zbarimg..."
 sudo apt install -y zbar-tools	
@@ -167,11 +139,6 @@ sudo apt install -y qrencode
 
 BLUE "Installing pdfcrack..."
 sudo apt install -y pdfcrack
-
-BLUE "Installing Hopper..."
-wget "https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.3.14-Linux.deb"
-dpkg -i Hopper-v4-4.3.14-Linux.deb
-rm Hopper-v4-4.3.14-Linux.deb
 
 BLUE "Downloading stegsolve.jar..."
 wget "http://www.caesum.com/handbook/Stegsolve.jar" -O "stegsolve.jar"
@@ -206,9 +173,6 @@ sudo apt install -y gimp
 
 BLUE "Installing cmake..."
 sudo apt install -y cmake
-
-BLUE "Installing mplayer..."
-sudo apt install -y mplayer
 
 BLUE "Installing sshpass..."
 sudo apt install -y sshpass
